@@ -1,0 +1,26 @@
+.menu {
+    background-color: #333; 
+    padding: 15px; 
+    border-top-right-radius: 10px; 
+    border-bottom-right-radius: 10px;
+    color: white; 
+    height: 100vh;
+}
+.menu h2 {
+    text-align: center; 
+    margin-bottom: 30px;
+}
+
+li{
+    margin-bottom: 90px;
+}
+
+a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.title-menu{
+    text-align: center;
+    padding-top: 30%;
+}

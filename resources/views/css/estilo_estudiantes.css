@@ -1,0 +1,13 @@
+.container{
+    padding: 25px;
+}
+
+h2{
+    text-align: center;
+    padding: 25px;
+}
+
+form{
+    width: 50%;
+    margin: 0 auto;
+}
