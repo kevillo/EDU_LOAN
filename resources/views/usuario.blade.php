@@ -37,15 +37,20 @@
                         <label for="nombre" class="form-label">Nombre o Usuario</label>
                         <input type="text" class="form-control" placeholder="Ingrese nombre" id="nombre" name="nombre" required>
                     </div>
+                      <!-- correo -->
+                      <div class="mb-3">
+                        <label for="email" class="form-label">Correo electronico</label>
+                        <input type="email" class="form-control" placeholder="Ingrese su correo" id="email" name="email" required>
+                    </div>
                     <!-- Contraseña -->
                     <div class="mb-3">
                         <label for="contraseña" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" placeholder="Ingrese contraseña" id="contraseña" name="contraseña" required>
+                        <input type="password" class="form-control" placeholder="Ingrese contraseña" id="contraseña" name="password" required>
                     </div>
                      <!-- Disponibilidad -->
                      <div class="mb-3">
                         <label for="disponibilidad" class="form-label">Disponibilidad</label>
-                        <select class="form-select" id="disponibilidad" name="id_rol_disponibilidad" required>
+                        <select class="form-select" id="disponibilidad" name="is_available" required>
                           <option value="" disabled selected>Seleccione la disponibilidad</option>
                           <option value="1">Activo</option>
                           <option value="2">Inactivo</option>
