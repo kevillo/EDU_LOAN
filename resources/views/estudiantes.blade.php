@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Estudiantes</title>
-    <link rel="stylesheet" href="css/estilo_estudiantes.css">
+    <link rel="stylesheet" href="../resources/css/estilo_estudiantes.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
@@ -13,7 +13,7 @@
         <form id="estudianteForm">
             <div class="row">
                 <div class="col-3">
-                    <img src="img/icon-estudiante.svg" alt="Icono de Estudiante" width="100" height="100">
+                    <img src="../resources/img/icon-estudiante.svg" alt="Icono de Estudiante" width="100" height="100">
                 </div>
                 <div class="col-9">
                     <!-- ID Estudiante -->
