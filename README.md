@@ -1,3 +1,2 @@
 # EDU_LOAN
 
-Palma
