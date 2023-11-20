@@ -10,11 +10,14 @@
 <body>
     <div class="login-box">
         <h1>Iniciar Sesión</h1>
-        <form method="POST" action="">
+        @if(session('error'))
+            <div>{{ session('error') }}</div>
+        @endif
+        <form action="{{ route('inicio.usuario') }}" method="post">
             @csrf
             <div class="form-group">
                 <label class="form-label" for="usuario">Usuario</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="Correo Electrónico" required autofocus>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" required autofocus>
             </div>
             <div class="form-group">
                 <label class="form-label" for="contraseña">Contraseña</label>

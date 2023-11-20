@@ -49,7 +49,7 @@ class User extends Authenticatable
     // relacion de un usuario con un rol de usuario
     public function rolUsuario()
     {
-        return $this->belongsTo(RolUsuario::class);
+        return $this->belongsTo(RolUsuario::class, 'id_rol_user');
     }
 
     // relacion de un usuario con un estudiante

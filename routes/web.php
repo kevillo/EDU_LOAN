@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
 Route::get('/inicioAdmin', function () {
     return view('menu_principal');
 });
@@ -38,7 +39,9 @@ Route::get('/prestamos', function () {
     return view('prestamos');
 });
 Route::get('/InicioEstudiantes', function () {
-    return view('estudiantes');
+    return view('menu_principal_estudiante');
 });
 
 Route::post('/insertarDatos', [UserController::class, 'store'])->name('registrar.usuario');
+
+Route::post('/login', [UserController::class, 'Inicio'])->name('inicio.usuario');
