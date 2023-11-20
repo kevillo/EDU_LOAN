@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,3 +41,4 @@ Route::get('/InicioEstudiantes', function () {
     return view('estudiantes');
 });
 
+Route::post('/insertarDatos', [UserController::class, 'store'])->name('registrar.usuario');

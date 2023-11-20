@@ -10,7 +10,17 @@
 <body>
     <div class="container">
         <h2>Registro de Usuarios</h2>
-        <form id="estudianteForm">
+        @if(session('exito'))
+            <div class="alert alert-success">
+                {{session('exito')}}
+            </div>
+        @endif
+        @if(session('fallo'))
+            <div class="alert alert-danger">
+                {{session('fallo')}}
+            </div>
+        @endif
+        <form action="{{route('registrar.usuario')}}" method="post">
             @csrf
             <div class="row">
                 <div class="col-3">
@@ -24,18 +34,17 @@
                     </div>
                     <!-- ID Rol Usuario -->
                     <div class="mb-3">
-                        <label for="id_rol_user" class="form-label">Rol Usuario</label>
-                        <select class="form-select" id="id_rol_user" name="id_rol_user" required>
+                        <label for="rol_usuario" class="form-label">Rol Usuario</label>
+                        <select class="form-select" id="rol_usuario" name="rol_usuario" required>
                           <option value="" disabled selected>Selecciona un rol de usuario</option>
-                          <option value="1">Usuario 1</option>
-                          <option value="2">Usuario 2</option>
-                          <option value="3">Usuario 3</option>
+                          <option value="1">Administrador</option>
+                          <option value="2">Estudiante</option>
                         </select>
                     </div>
                     <!-- Nombre -->
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre o Usuario</label>
-                        <input type="text" class="form-control" placeholder="Ingrese nombre" id="nombre" name="nombre" required>
+                        <label for="username" class="form-label">Nombre o Usuario</label>
+                        <input type="text" class="form-control" placeholder="Ingrese nombre" id="username" name="username" required>
                     </div>
                       <!-- correo -->
                       <div class="mb-3">
@@ -44,13 +53,13 @@
                     </div>
                     <!-- Contraseña -->
                     <div class="mb-3">
-                        <label for="contraseña" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" placeholder="Ingrese contraseña" id="contraseña" name="password" required>
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" placeholder="Ingrese contraseña" id="password" name="password" required>
                     </div>
                      <!-- Disponibilidad -->
                      <div class="mb-3">
-                        <label for="disponibilidad" class="form-label">Disponibilidad</label>
-                        <select class="form-select" id="disponibilidad" name="is_available" required>
+                        <label for="is_available" class="form-label">Disponibilidad</label>
+                        <select class="form-select" id="is_available" name="is_available" required>
                           <option value="" disabled selected>Seleccione la disponibilidad</option>
                           <option value="1">Activo</option>
                           <option value="2">Inactivo</option>

@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_rol_usuario');
+            $table->unsignedBigInteger('id_rol_user');
             $table->string('username');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_available')->default(true);
-            $table->foreign('id_rol_usuario')->references('id')->on('rol_usuarios')->onDelete('cascade');
+            $table->foreign('id_rol_user')->references('id')->on('rol_usuarios')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
