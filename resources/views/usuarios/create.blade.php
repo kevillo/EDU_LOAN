@@ -12,18 +12,15 @@
 
 @section('content')
 
+<br><br><br><br>
 <form action="{{route('usuarios.store')}}" method="post">
     @csrf
     <div class="row">
         <div class="col-3">
-            <img src="../resources/img/icon-usuario.png" alt="Icono de Usuario" width="100" height="100">
+            <img src="../../resources/img/icon-usuario.png" alt="Icono de Usuario" width="100" height="100">
         </div>
         <div class="col-9">
-            <!-- ID Usuario -->
-            <div class="mb-3">
-                <label for="id_usuario" class="form-label">ID Usuario</label>
-                <input type="text" class="form-control" id="id_usuario" name="id_usuario" disabled>
-            </div>
+
             <!-- ID Rol Usuario -->
             <div class="mb-3">
                 <label for="rol_usuario" class="form-label">Rol Usuario</label>
@@ -62,7 +59,7 @@
             </div>
 
             <!-- Botón Cancelar -->
-            <a href="#" class="btn btn-danger">Cancelar</a>
+            <a href="{{route('usuarios.index')}}" class="btn btn-danger">Cancelar</a>
             <!-- Botón Registrar -->
             <button type="submit" class="btn btn-primary">Registrar</button>
         </div>

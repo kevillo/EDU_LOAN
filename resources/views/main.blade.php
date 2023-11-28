@@ -15,7 +15,6 @@
 @section('content')
 
 @section('navbar')
-<a href="{{route('inicioAdmin')}}" class="navbar-custom-brand">EDU LOAN</a>
 @endsection
 
 <div class="container mt-5">

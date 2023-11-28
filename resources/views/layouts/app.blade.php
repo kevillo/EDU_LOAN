@@ -14,7 +14,8 @@
 
 <body>
     <nav class="navbar navbar-expand-lg">
-        @yield('navbar')
+
+        <a href="{{route('inicio')}}" class="navbar-custom-brand">EDU LOAN</a>
         <button class="navbar-toggler  " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav">
             <span class="navbar-toggler-icon"></span>
