@@ -27,8 +27,9 @@
                 <label for="rol_usuario" class="form-label">Rol Usuario</label>
                 <select class="form-select" id="rol_usuario" name="rol_usuario" required>
                     <option value="" disabled selected>Selecciona un rol de usuario</option>
-                    <option value="1">Administrador</option>
-                    <option value="2">Estudiante</option>
+                    @foreach ($roles as $rol)
+                    <option value="{{$rol->id}}">{{$rol->descripcion}}</option>
+                    @endforeach
                 </select>
             </div>
             <!-- Nombre -->
@@ -78,6 +79,12 @@
             <a href="{{route('usuarios.index')}}" class="btn btn-danger">Cancelar</a>
             <!-- Botón Registrar -->
             <button type="submit" class="btn btn-primary">Registrar</button>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 </form>

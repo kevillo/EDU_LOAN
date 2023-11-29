@@ -86,6 +86,10 @@
             <a href="{{route('usuarios.index')}}" class="btn btn-danger">Cancelar</a>
             <!-- Botón Registrar -->
             <button type="submit" class="btn btn-primary">Registrar</button>
+            <br><br><br>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 </form>
