@@ -10,9 +10,16 @@ class Curso extends Model
     use HasFactory;
 
     // relacion con la tabla estudiantes
+    // cambiar tabla
+    protected $table = 'cursos';
 
     public function estudiantes()
     {
         return $this->hasMany(Estudiante::class);
     }
+
+
+    protected $fillable = [
+        'nombre_curso',
+    ];
 }

@@ -24,13 +24,18 @@
             <ul class="nav-links navbar-nav mt-0">
                 @if (Auth::check() && Auth::user()->id_rol_user == 1)
                 <li class="nav-item"><a href="{{route('usuarios.index')}}" class="nav-link">Usuarios</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Equipos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Estudiantes</a></li>
+                <li class="nav-item"><a href="{{route('equipos.index')}}" class="nav-link">Equipos</a></li>
+                <li class="nav-item"><a href="{{route('estudiantes.index')}}" class="nav-link">Estudiantes</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Consultas</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Préstamos</a></li>
                 @else
                 <li class="nav-item"><a href="#" class="nav-link">Préstamos</a></li>
                 @endif
             </ul>
+            <ul class="nav-links navbar-nav mt-0 ms-auto">
+                <li class="nav-item"><a href="{{route('logout')}}" class="nav-link">Cerrar Sesión</a></li>
+            </ul>
+
         </div>
     </nav>
     <article>
@@ -42,6 +47,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
     @yield('js')
 </body>

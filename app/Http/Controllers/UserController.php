@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\RolUsuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('usuarios.create');
+        $roles = RolUsuario::all();
+        return view('usuarios.create', compact('roles'));
     }
 
     public function store(Request $request)
@@ -101,9 +103,11 @@ class UserController extends Controller
     }
     // Función para cerrar sesión
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('login');
     }
 

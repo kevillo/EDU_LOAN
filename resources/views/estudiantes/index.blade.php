@@ -10,8 +10,8 @@
 
 <div class="container mt-5">
     <div class="d-flex flex-column flex-md-row justify-content-between">
-        <h2 class="mb-3 mb-md-0">Equipos</h2>
-        <a href="{{ route('equipos.create') }}" class="btn btn-success add">Agregar equipo</a>
+        <h2 class="mb-3 mb-md-0">Estudiantes</h2>
+        <a href="{{ route('estudiantes.create') }}" class="btn btn-success add">Agregar estudiante</a>
     </div>
 </div>
 
@@ -49,25 +49,24 @@
 
 <main class="container mt-5">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-        @if(count($equipos) > 0)
-        @foreach ($equipos as $equipo)
+        @if(count($estudiantes) > 0)
+        @foreach ($estudiantes as $estudiante)
         <section>
             <!--inicio de card -->
             <div class="card custom-card ">
-                @if ($equipo->imagen_equipo)
+                @if ($estudiante->imagen_estudiante)
                 <img style="max-height: 200px; width: auto; object-fit: cover; height: 100%;"
-                    src="{{ asset('storage/' . $equipo->imagen_equipo) }}" class="card-img-top"
+                    src="{{ asset('storage/' . $estudiante->imagen_estudiante) }}" class="card-img-top"
                     alt="Banner de Publicación">
                 @endif
                 <div class="card-body custom-card-body">
-                    <h5 class="card-title custom-card-title">{{ $equipo->nombre_equipo }}</h5>
-                    <p class="card-text custom-card-text">{{ $equipo->marca_equipo }}</p>
-                    <p class="card-text custom-card-text">{{ $equipo->modelo_equipo }}</p>
+                    <h5 class="card-title custom-card-title">{{ $estudiante->nombre_estudiante }}</h5>
+                    <p class="card-text custom-card-text">{{ $estudiante->correo_estudiante }}</p>
                     <div class="custom-btn-container ">
                         <div class="d-flex">
-                            <a href="{{ route('equipos.edit', $equipo->id) }}"
+                            <a href="{{ route('estudiantes.edit', $estudiante->id) }}"
                                 class="btn btn-success custom-btn edit">Editar</a>
-                            <form action="{{ route('equipos.destroy', $equipo->id) }}" method="POST"
+                            <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST"
                                 class="form-delete form">
                                 @csrf
                                 @method('DELETE')
@@ -75,7 +74,8 @@
                             </form>
 
                         </div>
-                        <a href="{{ route('equipos.show', $equipo->id) }}" class="btn btn-primary custom-btn show">Ver
+                        <a href="{{ route('estudiantes.show', $estudiante->id) }}"
+                            class="btn btn-primary custom-btn show">Ver
                             detalles</a>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
 
 
         @else
-        <p class="no-usuario-message">No hay ningún equipo.</p>
+        <p class="no-usuario-message">No hay ningún Estudiante.</p>
         @endif
     </div>
 </main>

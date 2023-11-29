@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
+    public function create()
+    {
+        return view('cursos.create');
+    }
 
     public function store(Request $request)
     {
 
         $request->validate([
-            'nombre' => 'required',            
+            'nombre_curso' => 'required'
         ]);
-        $curso = new Curso;
-        $curso->nombre = $request->nombre;
-        $curso->save();
-        return redirect('/cursos')->with('correcto', 'Curso creado exitosamente');
+
+        Curso::create([
+            'nombre_curso' => $request->input('nombre_curso')
+        ]);
+
+        return redirect()->route('estudiantes.create')->with('Creado', 'Curso creado exitosamente.');
     }
 }

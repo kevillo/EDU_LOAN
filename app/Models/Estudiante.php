@@ -23,5 +23,13 @@ class Estudiante extends Model
         return $this->belongsTo(User::class);
     }
 
-    
+    protected $fillable = [
+        'nombre_estudiante',
+        'apellido_estudiante',
+        'correo_estudiante',
+        'fecha_nacimiento_estudiante',
+        'imagen_estudiante',
+        'id_curso',
+        'id_usuario'
+    ];
 }

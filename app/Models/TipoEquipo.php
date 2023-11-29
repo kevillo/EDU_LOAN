@@ -15,4 +15,9 @@ class TipoEquipo extends Model
     {
         return $this->hasMany(Equipo::class);
     }
+
+    protected $fillable = [
+        'descripcion_tipo_equipo',
+    ];
+
 }

@@ -15,5 +15,15 @@ class Equipo extends Model
     {
         return $this->belongsTo(TipoEquipo::class);
     }
-    
+
+    protected $fillable = [
+        'id_tipo_equipo',
+        'numero_serie',
+        'nombre_equipo',
+        'marca_equipo',
+        'imagen_equipo',
+        'modelo_equipo',
+        'color_equipo',
+        'estado_equipo',
+    ];
 }

@@ -65,8 +65,13 @@
                         <div class="d-flex">
                             <a href="{{ route('usuarios.edit', $usuario->id) }}"
                                 class="btn btn-success custom-btn edit">Editar</a>
-                            <button type="button" class="btn btn-danger custom-btn delete" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal">Eliminar</button>
+                            <!-- Button trigger modal -->
+                            <form action="{{ route('usuarios.destroy', $usuario->id) }}" class="form-delete"
+                                method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger custom-btn delete">Eliminar</button>
+                            </form>
                         </div>
                         <a href="{{ route('usuarios.show', $usuario->id) }}" class="btn btn-primary custom-btn show">Ver
                             detalles</a>
@@ -75,33 +80,7 @@
             </div>
             <!--fin de card -->
         </section>
-
-        <!-- Modal -->
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-danger text-white">
-                        <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="lead">¿Estás seguro de que quieres eliminar este usuario?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         @endforeach
-
 
         @else
         <p class="no-usuario-message">No hay ningún usuario.</p>
@@ -111,6 +90,8 @@
 
 @section('js')
 <script src="{{asset('../resources/js/usuarios/index.js')}}"></script>
+<script src="{{asset('../resources/js/delete.js')}} "></script>
+
 @endsection
 
 @endsection
