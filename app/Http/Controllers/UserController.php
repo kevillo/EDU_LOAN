@@ -103,9 +103,11 @@ class UserController extends Controller
     }
     // Función para cerrar sesión
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('login');
     }
 

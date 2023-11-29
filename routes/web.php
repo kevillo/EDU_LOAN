@@ -171,7 +171,8 @@ Route::get('/login', function () {
 
 Route::post('/login', [UserController::class, 'login'])->name('usuario.login');
 
-
+// cerrar sesion
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // ruta para app
 Route::get('/', function () {
     return view('layouts.app');

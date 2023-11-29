@@ -27,10 +27,15 @@
                 <li class="nav-item"><a href="{{route('equipos.index')}}" class="nav-link">Equipos</a></li>
                 <li class="nav-item"><a href="{{route('estudiantes.index')}}" class="nav-link">Estudiantes</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Consultas</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Préstamos</a></li>
                 @else
                 <li class="nav-item"><a href="#" class="nav-link">Préstamos</a></li>
                 @endif
             </ul>
+            <ul class="nav-links navbar-nav mt-0 ms-auto">
+                <li class="nav-item"><a href="{{route('logout')}}" class="nav-link">Cerrar Sesión</a></li>
+            </ul>
+
         </div>
     </nav>
     <article>

@@ -39,18 +39,37 @@
                 <input type="text" class="form-control" placeholder="Ingrese nombre" id="username" name="username"
                     required>
             </div>
+            @if($errors->has('username'))
+            <div class="alert alert-danger">
+                {{ $errors->first('username') }}
+            </div>
+            @endif
+
+
             <!-- correo -->
             <div class="mb-3">
                 <label for="email" class="form-label">Correo electronico</label>
                 <input type="email" class="form-control" placeholder="Ingrese su correo" id="email" name="email"
                     required>
             </div>
+            @if($errors->has('email'))
+            <div class="alert alert-danger">
+                {{ $errors->first('email') }}
+            </div>
+            @endif
+
             <!-- Contraseña -->
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" placeholder="Ingrese contraseña" id="password"
                     name="password" required>
             </div>
+            @if($errors->has('password'))
+            <div class="alert alert-danger">
+                {{ $errors->first('password') }}
+            </div>
+            @endif
+
             <!-- Disponibilidad -->
             <div class="mb-3">
                 <label for="is_available" class="form-label">Disponibilidad</label>
@@ -60,6 +79,8 @@
                     <option value="2">Inactivo</option>
                 </select>
             </div>
+            
+
 
             <!-- Botón Cancelar -->
             <a href="{{route('usuarios.index')}}" class="btn btn-danger">Cancelar</a>
