@@ -145,3 +145,10 @@ Route::post('/login', [UserController::class, 'login'])->name('usuario.login');
 Route::get('/', function () {
     return view('layouts.app');
 })->name('app');
+
+
+
+// ruta para bitacora
+Route::get('/bitacora', function () {
+    return view('bitacora');
+})->name('bitacora');
