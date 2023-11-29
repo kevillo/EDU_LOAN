@@ -26,10 +26,13 @@
                 <label for="rol_usuario" class="form-label">Rol Usuario</label>
                 <select class="form-select" id="rol_usuario" name="rol_usuario" required>
                     <option value="" disabled selected>Selecciona un rol de usuario</option>
-                    <option value="1">Administrador</option>
-                    <option value="2">Estudiante</option>
+                    @foreach ($roles as $rol)
+                    <option value="{{$rol->id}}">{{$rol->descripcion}}</option>
+                    @endforeach
+
                 </select>
             </div>
+            <a href="{{route('roles.create')}}" class="btn btn-success">Agregar Rol</a>
             <!-- Nombre -->
             <div class="mb-3">
                 <label for="username" class="form-label">Nombre o Usuario</label>

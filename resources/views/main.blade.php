@@ -56,7 +56,7 @@
                     <p class="card-text ">Facilita la gestión de estudiantes con nuestra plataforma eficiente. Agrega,
                         actualiza y elimina perfiles con facilidad, manteniendo un control total sobre la información
                         académica y personal.</p>
-                    <a href="{{ route('usuarios.index') }}" class="btn btn-success goto">Ir a estudiantes </a>
+                    <a href="{{ route('estudiantes.index') }}" class="btn btn-success goto">Ir a estudiantes </a>
                 </div>
             </div>
             <!-- fin texto-->

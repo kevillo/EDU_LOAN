@@ -97,11 +97,13 @@ nav {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    overflow: visible;
     background-color: #343a40;
     color: #868e96;
     padding: 15px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
+
     width: 100%;
 }

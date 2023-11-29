@@ -16,5 +16,8 @@ class RolUsuario extends Model
     {
         return $this->hasMany(User::class);
     }
-    
+
+    protected $fillable = [
+        'descripcion',
+    ];
 }

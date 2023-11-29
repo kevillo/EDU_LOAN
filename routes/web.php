@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\RolUsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,8 +108,29 @@ para la creacion, edicion, eliminacion y visualizacion de prestamos
 
 
 
+/*
+--------------------------------------------------------------------------
+| Rutas para la gestion de cursos
+--------------------------------------------------------------------------
+Estas rutas son para la gestion de cursos, en ellas se encuentran las rutas
+para la creacion, edicion, eliminacion y visualizacion de cursos
+*/
+
+Route::get('/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
+Route::post('/cursos', [CursoController::class, 'store'])->name('cursos.store');
 
 
+
+/*
+--------------------------------------------------------------------------
+| Rutas para la gestion de roles
+--------------------------------------------------------------------------
+Estas rutas son para la gestion de roles, en ellas se encuentran las rutas
+para la creacion, edicion, eliminacion y visualizacion de roles
+*/
+
+Route::get('/roles/create', [RolUsuarioController::class, 'create'])->name('roles.create');
+Route::post('/roles', [RolUsuarioController::class, 'store'])->name('roles.store');
 
 
 /* 
