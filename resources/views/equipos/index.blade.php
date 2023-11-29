@@ -1,0 +1,102 @@
+@extends('layouts.app')
+
+@section('css')
+<link rel="stylesheet" href="{{asset('../resources/css/usuarios/index.css')}}">
+@endsection
+
+
+@section('content')
+
+
+<div class="container mt-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between">
+        <h2 class="mb-3 mb-md-0">Equipos</h2>
+        <a href="{{ route('equipos.create') }}" class="btn btn-success add">Agregar equipo</a>
+    </div>
+</div>
+
+
+<!-- alertas -->
+@if(session('Eliminado'))
+<div class="container mt-3">
+    <div class="row justify-content-end">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="alert alert-success custom-alert" role="alert">
+                <strong>¡Eliminado!</strong> {{ session('Eliminado') }}
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+
+
+
+@if(session('Actualizado'))
+<div class="alert alert-success custom-alert" role="alert">
+    <strong>¡Actualizado!</strong> {{ session('Actualizado') }}
+</div>
+@endif
+
+@if(session('Creado'))
+<div class="alert alert-success custom-alert" role="alert">
+    <strong>¡Creado!</strong> {{ session('Creado') }}
+</div>
+@endif
+
+
+<!-- fin alertas -->
+
+<main class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        @if(count($equipos) > 0)
+        @foreach ($equipos as $equipo)
+        <section>
+            <!--inicio de card -->
+            <div class="card custom-card ">
+                @if ($equipo->imagen_equipo)
+                <img style="max-height: 200px; width: auto; object-fit: cover; height: 100%;"
+                    src="{{ asset('storage/' . $equipo->imagen_equipo) }}" class="card-img-top"
+                    alt="Banner de Publicación">
+                @endif
+                <div class="card-body custom-card-body">
+                    <h5 class="card-title custom-card-title">{{ $equipo->nombre_equipo }}</h5>
+                    <p class="card-text custom-card-text">{{ $equipo->marca_equipo }}</p>
+                    <p class="card-text custom-card-text">{{ $equipo->modelo_equipo }}</p>
+                    <div class="custom-btn-container ">
+                        <div class="d-flex">
+                            <a href="{{ route('equipos.edit', $equipo->id) }}"
+                                class="btn btn-success custom-btn edit">Editar</a>
+                            <form action="{{ route('equipos.destroy', $equipo->id) }}" method="POST"
+                                class="form-delete form">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger custom-btn delete ">Eliminar</button>
+                            </form>
+
+                        </div>
+                        <a href="{{ route('equipos.show', $equipo->id) }}" class="btn btn-primary custom-btn show">Ver
+                            detalles</a>
+                    </div>
+                </div>
+            </div>
+            <!--fin de card -->
+        </section>
+
+
+
+        @endforeach
+
+
+        @else
+        <p class="no-usuario-message">No hay ningún equipo.</p>
+        @endif
+    </div>
+</main>
+<br><br><br><br><br><br>
+@section('js')
+<script src="{{asset('../resources/js/usuarios/index.js')}}"></script>
+<script src="{{asset('../resources/js/delete.js')}} "></script>
+@endsection
+
+@endsection

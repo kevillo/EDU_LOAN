@@ -15,7 +15,7 @@
         @method('PUT')
         <div class="row">
             <div class="col-md-3">
-                <img src="../../../resources/img/icon-estudiante.svg" class="img img-fluid card-img"
+                <img src="{{asset('storage/' . $estudiante->imagen_estudiante)}}" class="img img-fluid card-img"
                     alt="Icono de Estudiante" width="100" height="100">
             </div>
             <div class="col-md-9">

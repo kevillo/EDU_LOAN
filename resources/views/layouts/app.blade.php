@@ -24,8 +24,8 @@
             <ul class="nav-links navbar-nav mt-0">
                 @if (Auth::check() && Auth::user()->id_rol_user == 1)
                 <li class="nav-item"><a href="{{route('usuarios.index')}}" class="nav-link">Usuarios</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Equipos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Estudiantes</a></li>
+                <li class="nav-item"><a href="{{route('equipos.index')}}" class="nav-link">Equipos</a></li>
+                <li class="nav-item"><a href="{{route('estudiantes.index')}}" class="nav-link">Estudiantes</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Consultas</a></li>
                 @else
                 <li class="nav-item"><a href="#" class="nav-link">Préstamos</a></li>

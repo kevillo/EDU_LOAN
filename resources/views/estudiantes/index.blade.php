@@ -10,7 +10,7 @@
 
 <div class="container mt-5">
     <div class="d-flex flex-column flex-md-row justify-content-between">
-        <h2 class="mb-3 mb-md-0">Estudiante</h2>
+        <h2 class="mb-3 mb-md-0">Estudiantes</h2>
         <a href="{{ route('estudiantes.create') }}" class="btn btn-success add">Agregar estudiante</a>
     </div>
 </div>
