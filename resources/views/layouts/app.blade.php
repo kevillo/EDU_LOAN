@@ -34,6 +34,7 @@
                 <li class="nav-item"><a href="{{route('estudiantes.index')}}" class="nav-link">Estudiantes</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Consultas</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Préstamos</a></li>
+                <li class="nav-item"><a href="{{route('bitacora.bitacora')}}" class="nav-link">Bitacora</a></li>
                 @else
                 <li class="nav-item"><a href="#" class="nav-link">Préstamos</a></li>
                 @endif

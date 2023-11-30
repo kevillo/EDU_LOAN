@@ -136,6 +136,10 @@
                     </div>
                     @endif
 
+                    <!--Datos de bitacora-->
+            <input type="hidden" id="tabla" name="tabla" value="equipo">
+            <input type="hidden" id="cambio" name="cambio" value="crear">
+
 
 
                     <!-- Botones Cancelar y Registrar -->

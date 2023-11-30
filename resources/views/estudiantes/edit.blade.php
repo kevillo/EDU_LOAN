@@ -113,6 +113,10 @@
                     @endif
                 </div>
 
+                <!--Datos de bitacora-->
+            <input type="hidden" id="tabla" name="tabla" value="estudiante">
+            <input type="hidden" id="cambio" name="cambio" value="modificar">
+
                 <!-- Botones -->
                 <div class="mb-3">
                     <a href="{{route('estudiantes.index')}}" class="btn btn-secondary">Cancelar</a>

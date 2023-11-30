@@ -15,6 +15,10 @@
                 placeholder="Ingrese el tipo de equipo">
         </div>
         <br>
+        <!--Datos de bitacora-->
+        <input type="hidden" id="tabla" name="tabla" value="tipo_equipos">
+        <input type="hidden" id="cambio" name="cambio" value="crear">
+
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>

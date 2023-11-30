@@ -75,6 +75,10 @@
                 </select>
             </div>
 
+            <!--Datos de bitacora-->
+            <input type="hidden" id="tabla" name="tabla" value="usuario">
+            <input type="hidden" id="cambio" name="cambio" value="modificar">
+
             <!-- Botón Cancelar -->
             <a href="{{route('usuarios.index')}}" class="btn btn-danger">Cancelar</a>
             <!-- Botón Registrar -->

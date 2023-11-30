@@ -20,6 +20,9 @@
             <input type="text" class="form-control" id="name" name="descripcion"
                 placeholder="Ingrese el nombre del rol">
         </div>
+        <!--Datos de bitacora-->
+        <input type="hidden" id="tabla" name="tabla" value="rol_usuario">
+        <input type="hidden" id="cambio" name="cambio" value="crear">
         <br>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

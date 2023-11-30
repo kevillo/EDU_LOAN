@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Estudiante;
 use App\Models\Curso;
 use App\Models\User;
+use App\Models\Bitacora;
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller
@@ -63,6 +64,13 @@ class EstudianteController extends Controller
             'fecha_nacimiento_estudiante' => $request->input('fecha_nacimiento_estudiante'),
         ]);
 
+        $user = Auth::user();
+        Bitacora::create([
+            'username_bit' => $user->username,
+            'tabla'=>$request->input('tabla'),
+            'cambio'=>$request->input('cambio'),
+        ]);
+
         return redirect()->route('estudiantes.index')->with('Creado', 'Estudiante creado exitosamente.');
     }
 
@@ -114,6 +122,13 @@ class EstudianteController extends Controller
             'fecha_nacimiento_estudiante' => $request->input('fecha_nacimiento_estudiante'),
         ]);
 
+        $user = Auth::user();
+        Bitacora::create([
+            'username_bit' => $user->username,
+            'tabla'=>$request->input('tabla'),
+            'cambio'=>$request->input('cambio'),
+        ]);
+
         return redirect()->route('estudiantes.index')->with('Actualizado', 'Estudiante actualizado exitosamente.');
     }
     // fucnion para ver los detalles de los estudiantes con todo y curso y usuario
@@ -131,7 +146,7 @@ class EstudianteController extends Controller
 
     // funcion para eliminar estudiantes
 
-    public function destroy(Estudiante $estudiante)
+    public function destroy(Estudiante $estudiante, $tabla="tabla",$cambio="cambio")
     {
         if (!Auth::check()) {
             return redirect()->route('login');
@@ -140,6 +155,14 @@ class EstudianteController extends Controller
         Storage::disk('public')->delete($estudiante->imagen_estudiante);
         // eliminar estudiante
         $estudiante->delete();
+
+        $user = Auth::user();
+        Bitacora::create([  
+            'username_bit' => $user->username,
+            $tabla=>"estudiante",
+            $cambio=>"eliminacion",   
+        ]);
+
         return redirect()->route('estudiantes.index')->with('Eliminado', 'Estudiante eliminado exitosamente.');
     }
 }

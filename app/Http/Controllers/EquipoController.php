@@ -8,6 +8,7 @@ use App\Models\TipoEquipo;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Bitacora;
 
 class EquipoController extends Controller
 {
@@ -59,6 +60,13 @@ class EquipoController extends Controller
             'estado_equipo' => $request->input('estado_equipo'),
         ]);
 
+        $user = Auth::user();
+        Bitacora::create([
+            'username_bit' => $user->username,
+            'tabla'=>$request->input('tabla'),
+            'cambio'=>$request->input('cambio'),
+        ]);
+
         return redirect()->route('equipos.index')->with('Creado', 'Equipo creado exitosamente');
     }
     // edit
@@ -106,6 +114,14 @@ class EquipoController extends Controller
             'estado_equipo' => $request->input('estado_equipo'),
         ]);
 
+        $user = Auth::user();
+        Bitacora::create([
+            
+            'username_bit' => $user->username,
+            'tabla'=>$request->input('tabla'),
+            'cambio'=>$request->input('cambio'),
+        ]);
+
         return redirect()->route('equipos.index')->with('Actualizado', 'Equipo actualizado exitosamente');
     }
 
@@ -122,11 +138,19 @@ class EquipoController extends Controller
 
     // destroy
 
-    public function destroy(Equipo $equipo)
+    public function destroy(Equipo $equipo, $tabla="tabla",$cambio="cambio")
     {
         if (!Auth::check()) {
             return redirect()->route('login');
         }
+
+        $user = Auth::user();
+        Bitacora::create([  
+            'username_bit' => $user->username,
+            $tabla=>"equipo",
+            $cambio=>"eliminacion",   
+        ]);
+
         Storage::disk('public')->delete($equipo->imagen_equipo);
         $equipo->delete();
         return redirect()->route('equipos.index')->with('Eliminado', 'Equipo eliminado exitosamente');

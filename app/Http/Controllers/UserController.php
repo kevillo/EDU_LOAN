@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\RolUsuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Bitacora;
 
 class UserController extends Controller
 {
@@ -31,9 +32,9 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        if (!Auth::check()) {
+        /*if (!Auth::check()) {
             return redirect()->route('login');
-        }
+        }*/
         $request->validate([
             'rol_usuario' => 'required',
             'username' => 'required',
@@ -48,6 +49,13 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password'),
             'is_available' => $request->input('is_available'),
+        ]);
+
+        $user = Auth::user();
+        Bitacora::create([
+            'username_bit' => $user->username,
+            'tabla'=>$request->input('tabla'),
+            'cambio'=>$request->input('cambio'),
         ]);
 
         return redirect()->route('usuarios.index')->with('Creado', 'Usuario creado exitosamente.');
@@ -90,14 +98,29 @@ class UserController extends Controller
             'is_available' => $request->input('is_available'),
         ]);
 
+        $user = Auth::user();
+        Bitacora::create([
+            'username_bit' => $user->username,
+            'tabla'=>$request->input('tabla'),
+            'cambio'=>$request->input('cambio'),
+        ]);
+
         return redirect()->route('usuarios.index')->with('Actualizado', 'Usuario actualizado exitosamente.');
     }
 
-    public function destroy(user $usuario)
+    public function destroy(user $usuario, $tabla="tabla",$cambio="cambio")
     {
         if (!Auth::check()) {
             return redirect()->route('login');
         }
+
+        $user = Auth::user();
+        Bitacora::create([  
+            'username_bit' => $user->username,
+            $tabla=>"usuario",
+            $cambio=>"eliminacion",   
+        ]);
+
         $usuario->delete();
         return redirect()->route('usuarios.index')->with('Eliminado', 'Usuario eliminado exitosamente.');
     }
@@ -105,9 +128,10 @@ class UserController extends Controller
     // Función para iniciar sesión
     public function login(Request $request)
     {
+        /*
         if (!Auth::check()) {
             return redirect()->route('login');
-        }
+        }*/
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -119,6 +143,7 @@ class UserController extends Controller
             } elseif ($user->id_rol_user == 2) {
                 return redirect()->route('inicio'); // Ruta para estudiantes
             }
+
         }
 
         // La autenticación falló

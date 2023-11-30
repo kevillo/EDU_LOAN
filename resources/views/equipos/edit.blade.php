@@ -132,6 +132,10 @@
                 </div>
                 @endif
 
+                <!--Datos de bitacora-->
+            <input type="hidden" id="tabla" name="tabla" value="equipo">
+            <input type="hidden" id="cambio" name="cambio" value="modificar">
+
                 <!-- Botones Cancelar y Registrar -->
                 <div class="mb-3">
                     <a href="{{ route('equipos.index') }}" class="btn btn-danger">Cancelar</a>
