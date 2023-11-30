@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Equipo;
 use App\Models\TipoEquipo;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class EquipoController extends Controller
@@ -13,6 +14,9 @@ class EquipoController extends Controller
     // function index
     public function index(Equipo $equipo)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $equipos = Equipo::all();
         return view('equipos.index', compact('equipos'));
     }
@@ -20,14 +24,18 @@ class EquipoController extends Controller
     // function create
     public function create()
     {
-
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $tipos_equipos = TipoEquipo::all();
         return view('equipos.create', compact('tipos_equipos'));
     }
 
     public function store(Request $request)
     {
-
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $request->validate([
             'id_tipo_equipo' => 'required',
             'numero_serie' => 'required',
@@ -56,6 +64,9 @@ class EquipoController extends Controller
     // edit
     public function edit(Equipo $equipo)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $tipos_equipos = TipoEquipo::all();
         return view('equipos.edit', compact('equipo', 'tipos_equipos'));
     }
@@ -63,7 +74,9 @@ class EquipoController extends Controller
     // update
     public function update(Request $request, Equipo $equipo)
     {
-
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $request->validate([
             'id_tipo_equipo' => 'required',
             'numero_serie' => 'required',
@@ -100,6 +113,9 @@ class EquipoController extends Controller
 
     public function show(Equipo $equipo)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $tipo_equipo = TipoEquipo::find($equipo->id_tipo_equipo);
         return view('equipos.show', compact('equipo', 'tipo_equipo'));
     }
@@ -108,6 +124,9 @@ class EquipoController extends Controller
 
     public function destroy(Equipo $equipo)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         Storage::disk('public')->delete($equipo->imagen_equipo);
         $equipo->delete();
         return redirect()->route('equipos.index')->with('Eliminado', 'Equipo eliminado exitosamente');

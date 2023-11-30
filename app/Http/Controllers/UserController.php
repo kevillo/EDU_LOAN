@@ -13,19 +13,27 @@ class UserController extends Controller
     // Función para mostrar la vista de inicio de sesión
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $usuarios = User::all();
         return view('usuarios.index', compact('usuarios'));
     }
 
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $roles = RolUsuario::all();
         return view('usuarios.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
-
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $request->validate([
             'rol_usuario' => 'required',
             'username' => 'required',
@@ -47,17 +55,25 @@ class UserController extends Controller
 
     public function show(user $usuario)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         return view('usuarios.show', compact('usuario'));
     }
     public function edit(user $usuario)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $roles = RolUsuario::all();
         return view('usuarios.edit', compact('usuario', 'roles'));
     }
 
     public function update(Request $request, user $usuario)
     {
-
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $request->validate([
             'rol_usuario' => 'required',
             'username' => 'required',
@@ -79,6 +95,9 @@ class UserController extends Controller
 
     public function destroy(user $usuario)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $usuario->delete();
         return redirect()->route('usuarios.index')->with('Eliminado', 'Usuario eliminado exitosamente.');
     }
@@ -86,6 +105,9 @@ class UserController extends Controller
     // Función para iniciar sesión
     public function login(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -106,6 +128,9 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

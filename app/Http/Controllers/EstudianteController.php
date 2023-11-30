@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Estudiante;
 use App\Models\Curso;
 use App\Models\User;
@@ -16,6 +17,9 @@ class EstudianteController extends Controller
 
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $estudiantes = Estudiante::all();
         return view('estudiantes.index', compact('estudiantes'));
     }
@@ -23,6 +27,9 @@ class EstudianteController extends Controller
     // funcion para crear estudiantes
     public function create(Curso $cursos)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $cursos = Curso::all();
         $usuarios = User::all();
 
@@ -31,6 +38,9 @@ class EstudianteController extends Controller
 
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $request->validate([
             'id_curso' => 'required',
             'id_usuario' => 'required',
@@ -59,6 +69,9 @@ class EstudianteController extends Controller
     // funcion para editar estudiantes
     public function edit(Estudiante $estudiante)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $cursos = Curso::all();
         $usuarios = User::all();
         return view('estudiantes.edit', compact('estudiante', 'cursos', 'usuarios'));
@@ -67,6 +80,9 @@ class EstudianteController extends Controller
     // funcion para actualizar estudiantes
     public function update(Request $request, Estudiante $estudiante)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $request->validate([
             'id_curso' => 'required',
             'id_usuario' => 'required',
@@ -103,6 +119,9 @@ class EstudianteController extends Controller
     // fucnion para ver los detalles de los estudiantes con todo y curso y usuario
     public function show(Estudiante $estudiante)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         // buscar el curso y el usuario del estudiante
         $cursos = Curso::find($estudiante->id_curso);
         $usuarios = User::find($estudiante->id_usuario);
@@ -114,6 +133,9 @@ class EstudianteController extends Controller
 
     public function destroy(Estudiante $estudiante)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         // eliminar imagen
         Storage::disk('public')->delete($estudiante->imagen_estudiante);
         // eliminar estudiante
