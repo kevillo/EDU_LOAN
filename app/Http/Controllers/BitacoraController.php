@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bitacora;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BitacoraController extends Controller
 {
@@ -12,8 +13,8 @@ class BitacoraController extends Controller
      */
     public function index()
     {
-        $usuarios = Bitacora::all();
-        return view('bitacora', compact('bitacora'));
+        $bitacora = Bitacora::all();
+        return view('bitacora.bitacora', compact('bitacora'));
     }
 
 
@@ -28,8 +29,9 @@ class BitacoraController extends Controller
             'cambio' => 'required',
         ]);
 
+        $user = Auth::user();
         Bitacora::create([
-            'username_bit' => $request->input('username'),
+            'username_bit' => $user->username,
             'tabla' => $request->input('tabla'),
             'cambio' => $request->input('cambio'),
         ]);

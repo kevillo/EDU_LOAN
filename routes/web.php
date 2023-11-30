@@ -8,6 +8,8 @@ use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\RolUsuarioController;
 use App\Http\Controllers\TipoEquipoController;
+use App\Http\Controllers\PrestamoController;
+use App\Http\Controllers\BitacoraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,8 +120,23 @@ Estas rutas son para la gestion de prestamos, en ellas se encuentran las rutas
 para la creacion, edicion, eliminacion y visualizacion de prestamos
 */
 
+Route::get('/prestamos', [PrestamoController::class, 'index'])->name('prestamos.index');
+Route::get('/prestamos/create', [PrestamoController::class, 'create'])->name('prestamos.create');
+
+/*
+--------------------------------------------------------------------------
+| Rutas para la gestion de bitacoras
+--------------------------------------------------------------------------
+Estas rutas son para la gestion de bitacoras, en ellas se encuentran las rutas
+para la creacion, edicion, eliminacion y visualizacion de bitacoras
+*/
+
+Route::get('/bitacora', function () {
+    return view('bitacora.bitacora');
+})->name('bitacora');
 
 
+Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.bitacora');
 /*
 --------------------------------------------------------------------------
 | Rutas para la gestion de cursos
@@ -154,7 +171,7 @@ para los menus principales de los usuarios
 */
 
 
-Route::get('/inicio', function () {
+Route::get('/', function () {
     return view('main');
 })->name('inicio');
 
@@ -173,14 +190,3 @@ Route::post('/login', [UserController::class, 'login'])->name('usuario.login');
 
 // cerrar sesion
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-// ruta para app
-Route::get('/', function () {
-    return view('layouts.app');
-})->name('app');
-
-
-
-// ruta para bitacora
-Route::get('/bitacora', function () {
-    return view('bitacora');
-})->name('bitacora');

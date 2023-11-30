@@ -33,7 +33,7 @@
                     <p class="card-text ">Optimiza la gestión de préstamos de equipos con nuestra plataforma dedicada.
                         Toma decisiones informadas al revisar y aceptar, o rechazar, solicitudes de préstamo de equipos
                     </p>
-                    <a href="#" class="btn btn-success goto">Ir a prestamos </a>
+                    <a href="{{route('prestamos.create')}}" class="btn btn-success goto">Ir a prestamos </a>
                 </div>
             </div>
             <!-- fin texto-->
