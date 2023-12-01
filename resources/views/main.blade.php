@@ -12,10 +12,23 @@
 
 
 
+
+
 @section('content')
 
-@section('navbar')
-@endsection
+<!-- alertas -->
+@if(session('Actualizado'))
+<div class="alert alert-success custom-alert" role="alert">
+    <strong>¡Actualizado!</strong> {{ session('Actualizado') }}
+</div>
+@endif
+
+@if(session('Creado'))
+<div class="alert alert-success custom-alert" role="alert">
+    <strong>¡Creado!</strong> {{ session('Creado') }}
+</div>
+@endif
+
 
 <div class="container mt-5">
     <!-- Primera tarjeta (orientada a la derecha) -->
@@ -143,6 +156,10 @@
 @endif
 <br><br><br><br><br>
 
+@section('js')
+<script src="{{asset('../resources/js/usuarios/index.js')}}"></script>
+<script src="{{asset('../resources/js/delete.js')}} "></script>
+@endsection
 
 
 @endsection

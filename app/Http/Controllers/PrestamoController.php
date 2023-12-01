@@ -129,15 +129,16 @@ class PrestamoController extends Controller
             $prestamo->fecha_prestamo = date('Y-m-d');
             $prestamo->save();
 
+            // se redirecciona a la vista de prestamos
 
-            return redirect()->route('prestamos.index')->with('Creado', 'Prestamo aceptado exitosamente.');
+            return redirect()->route('usuarios.main')->with('Actualizado', 'Prestamo aceptado exitosamente.');
         } elseif ($request->input('accion_delete')) {
             // si se oprimio el boton de rechazar, se cambia el estado del prestamo a rechazado
             $prestamo->estado_prestamo = 'Rechazado';
             // se guarda el cambio
             $prestamo->save();
             // se redirecciona a la vista de prestamos
-            return redirect()->route('prestamos.index')->with('Creado', 'Prestamo rechazado exitosamente.');
+            return redirect()->route('usuarios.main')->with('Actualizado', 'Prestamo rechazado exitosamente.');
         }
         // si se oprimio el boton de devolver, se cambia el estado del prestamo a devuelto
         elseif ($request->input('accion_devolver')) {
@@ -151,7 +152,7 @@ class PrestamoController extends Controller
             $equipo->estado_equipo = 0;
             $equipo->save();
             // se redirecciona a la vista de prestamos
-            return redirect()->route('usuarios.main')->with('Creado', 'Prestamo devuelto exitosamente.');
+            return redirect()->route('usuarios.main')->with('Actualizado', 'Prestamo devuelto exitosamente.');
         }
 
 

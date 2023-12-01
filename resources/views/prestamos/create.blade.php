@@ -70,16 +70,10 @@
                 <tbody>
                     <tr>
                         <td>
-                            <!-- el nombre del estuidante que esta  logueado  que esta en $estudiantes -->
                             <input type="text" class="form-control" id="estudiante" name="nombre_estudiante"
                                 value="{{$estudiantes->nombre_estudiante}}" readonly>
-                            <!-- el id del estudiante que esta  logueado  que esta en $estudiantes -->
                             <input type="hidden" class="form-control" id="estudiante" name="id_estudiante"
                                 value="{{$estudiantes->id}}" readonly>
-
-
-
-
                         </td>
                         <td>
                             <select class="form-select" id="equipo" name="id_equipo" required>
@@ -90,7 +84,6 @@
                             </select>
                         </td>
                     </tr>
-                    <!-- A través de código hacer que aumenten las filas  -->
                 </tbody>
             </table>
             @if ($errors->has('id_equipo'))
@@ -130,8 +123,6 @@
                 {{ $errors->first('fecha_solictud') }}
             </div>
             @endif
-
-
             <br>
             <!-- campo de estado de prestamo que diga "Pendiente" que este oculto -->
             <input type="hidden" class="form-control" id="estado_prestamo" name="estado_prestamo" required
