@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\EquipoController;
@@ -10,6 +9,7 @@ use App\Http\Controllers\RolUsuarioController;
 use App\Http\Controllers\TipoEquipoController;
 use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\ConsultaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +51,9 @@ Route::put('/usuarios/{usuario}', [UserController::class, 'update'])->name('usua
 // rutas para la eliminacion de usuarios
 Route::delete('/usuarios/{usuario}', [UserController::class, 'destroy'])->name('usuarios.destroy');
 
+//ruta para consultas
+Route::get('/consultas', [ConsultaController::class, 'index'])->name('consultas.index');
+Route::get('/consultas/pdf', [ConsultaController::class, 'pdf'])->name('consultas.pdf');
 /*
 --------------------------------------------------------------------------
 | Rutas para la gestion de estudiantes

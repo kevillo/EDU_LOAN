@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+}
+
+.cabecera {
+    background-color: black;
+    color: white;
+}
+
+.table {
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+    border-spacing: 10px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+}
+
+thead {
+    background-color: black;
+    color: white;
+}
+
+tr {
+    text-align: center;
+}

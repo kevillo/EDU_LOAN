@@ -27,7 +27,7 @@
                 <li class="nav-item"><a href="{{route('usuarios.index')}}" class="nav-link">Usuarios</a></li>
                 <li class="nav-item"><a href="{{route('equipos.index')}}" class="nav-link">Equipos</a></li>
                 <li class="nav-item"><a href="{{route('estudiantes.index')}}" class="nav-link">Estudiantes</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Consultas</a></li>
+                <li class="nav-item"><a href="{{route('consultas.index')}}" class="nav-link">Consultas</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Préstamos</a></li>
                 <li class="nav-item"><a href="{{route('bitacora.bitacora')}}" class="nav-link">Bitacora</a></li>
                 @else
