@@ -67,8 +67,8 @@ class EstudianteController extends Controller
         $user = Auth::user();
         Bitacora::create([
             'username_bit' => $user->username,
-            'tabla'=>$request->input('tabla'),
-            'cambio'=>$request->input('cambio'),
+            'tabla' => $request->input('tabla'),
+            'cambio' => $request->input('cambio'),
         ]);
 
         return redirect()->route('estudiantes.index')->with('Creado', 'Estudiante creado exitosamente.');
@@ -125,8 +125,8 @@ class EstudianteController extends Controller
         $user = Auth::user();
         Bitacora::create([
             'username_bit' => $user->username,
-            'tabla'=>$request->input('tabla'),
-            'cambio'=>$request->input('cambio'),
+            'tabla' => $request->input('tabla'),
+            'cambio' => $request->input('cambio'),
         ]);
 
         return redirect()->route('estudiantes.index')->with('Actualizado', 'Estudiante actualizado exitosamente.');
@@ -146,7 +146,7 @@ class EstudianteController extends Controller
 
     // funcion para eliminar estudiantes
 
-    public function destroy(Estudiante $estudiante, $tabla="tabla",$cambio="cambio")
+    public function destroy(Estudiante $estudiante, $tabla = "tabla", $cambio = "cambio")
     {
         if (!Auth::check()) {
             return redirect()->route('login');
@@ -157,12 +157,19 @@ class EstudianteController extends Controller
         $estudiante->delete();
 
         $user = Auth::user();
-        Bitacora::create([  
+        Bitacora::create([
             'username_bit' => $user->username,
-            $tabla=>"estudiante",
-            $cambio=>"eliminacion",   
+            $tabla => "estudiante",
+            $cambio => "eliminacion",
         ]);
 
         return redirect()->route('estudiantes.index')->with('Eliminado', 'Estudiante eliminado exitosamente.');
+    }
+
+    public function buscar(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $estudiante = Estudiante::where('nombre_estudiante', 'like', '%' . $nombre . '%')->get();
+        return view('estudiantes.index', ['estudiantes' => $estudiante]);
     }
 }

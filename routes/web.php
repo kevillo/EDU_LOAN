@@ -201,3 +201,13 @@ Route::post('/login', [UserController::class, 'login'])->name('usuario.login');
 
 // cerrar sesion
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+/*
+--------------------------------------------------------------------------
+| Rutas para las consultas
+--------------------------------------------------------------------------
+Estas rutas son para las consultas
+*/
+Route::post('/buscar-usuario', [UserController::class, 'buscar'])->name('buscar.usuario');
+Route::post('/buscar-equipos', [EquipoController::class, 'buscar'])->name('buscar.equipos');
+Route::post('/buscar-estudiantes', [EstudianteController::class, 'buscar'])->name('buscar.estudiantes');

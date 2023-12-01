@@ -1,37 +1,42 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('../resources/css/usuarios/index.css')}}">
+<link rel="stylesheet" href="{{ asset('path/to/custom/css/usuarios/index.css') }}">
 @endsection
 
-
 @section('content')
-<div class="container">
-
+<h2 class="text-center">Bitácora</h2>
+<div class="container p-5">
     @if(count($bitacora) > 0)
-    <table style="border:1px solid black;">
-        <tr>
-            <th>Usuario</th>
-            <th>Cambio</th>
-            <th>Tabla</th>
-        </tr>
-        @foreach ($bitacora as $bitacora)
-        <tr>
-            <td>{{ $bitacora->username_bit }} </td>
-            <td>{{ $bitacora->cambio }}</td>
-            <td>{{ $bitacora->tabla }}</td>
-        </tr>
-        @endforeach
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Cambio</th>
+                    <th>Tabla</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($bitacora as $registro)
+                <tr>
+                    <td>{{ $registro->username_bit }}</td>
+                    <td>{{ $registro->cambio }}</td>
+                    <td>{{ $registro->tabla }}</td>
+                    <td>{{ $registro->created_at }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     @else
     <p class="no-usuario-message">No hay ningún dato.</p>
     @endif
-</div>
+
+    <a href="{{route('usuarios.main')}}" class="btn btn-primary">Regresar</a>
 </div>
 
-@section('js')
-<script src="{{asset('../resources/js/usuarios/index.js')}}"></script>
-<script src="{{asset('../resources/js/delete.js')}} "></script>
-@endsection
+<!-- regresar-->
 
 @endsection

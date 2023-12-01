@@ -2,7 +2,7 @@
 
 
 @section('title')
-<title>Inicio</title>
+<title>Prestamos</title>
 @endsection
 
 
@@ -62,6 +62,11 @@
                             value="rechazar">Rechazar</button>
                         @endif
 
+
+                        <input type="hidden" id="tabla" name="tabla" value="Prestamo">
+                        <input type="hidden" id="cambio" name="cambio_aceptar" value="Prestamo aceptado">
+                        <input type="hidden" id="cambio" name="cambio_rechazar" value="Prestamo Rechazado">
+                        <input type="hidden" id="cambio" name="cambio_devolver" value="Prestamo devuelto">
                     </form>
                 </td>
 
@@ -77,6 +82,8 @@
     @if (Auth::user()->id_rol_user == 2)
     <a href="{{ route('prestamos.create') }}" class="btn btn-primary">Solicitar un nuevo prestamo</a>
     @endif
+
+
 
 
 </div>

@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-<title>Detalles del Estudiante</title>
+<title>Detalles del equipo</title>
 @endsection
 
 @section('content')

@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-<title>Registrar Usuario</title>
+<title>Actualizar informacion Usuario</title>
 @endsection
 
 

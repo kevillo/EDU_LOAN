@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\TipoEquipo;
 use App\Models\Equipo;
 use App\Models\RolUsuario;
+use App\Models\Bitacora;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
 
@@ -101,6 +102,13 @@ class PrestamoController extends Controller
         $equipo->estado_equipo = $en_espera;
         $equipo->save();
 
+        // enviar a la bitacora el cambio de estado del equipo
+        $user = Auth::user();
+        Bitacora::create([
+            'username_bit' => $user->username,
+            'tabla' => $request->input('tabla'),
+            'cambio' => $request->input('cambio'),
+        ]);
 
         // redireccionar a la vista de prestamos
         return redirect()->route('usuarios.main')->with('Creado', 'Prestamo creado exitosamente.');
@@ -129,6 +137,14 @@ class PrestamoController extends Controller
             $prestamo->fecha_prestamo = date('Y-m-d');
             $prestamo->save();
 
+            // se envia a la bitacora el cambio de estado del prestamo
+            $user = Auth::user();
+            Bitacora::create([
+                'username_bit' => $user->username,
+                'tabla' => $request->input('tabla'),
+                'cambio' => $request->input('cambio_aceptar'),
+            ]);
+
             // se redirecciona a la vista de prestamos
 
             return redirect()->route('usuarios.main')->with('Actualizado', 'Prestamo aceptado exitosamente.');
@@ -137,6 +153,13 @@ class PrestamoController extends Controller
             $prestamo->estado_prestamo = 'Rechazado';
             // se guarda el cambio
             $prestamo->save();
+            $user = Auth::user();
+            Bitacora::create([
+                'username_bit' => $user->username,
+                'tabla' => $request->input('tabla'),
+                'cambio' => $request->input('cambio_rechazar'),
+            ]);
+
             // se redirecciona a la vista de prestamos
             return redirect()->route('usuarios.main')->with('Actualizado', 'Prestamo rechazado exitosamente.');
         }
@@ -151,6 +174,14 @@ class PrestamoController extends Controller
             $equipo = Equipo::find($prestamo->id_equipo);
             $equipo->estado_equipo = 0;
             $equipo->save();
+
+            $user = Auth::user();
+            Bitacora::create([
+                'username_bit' => $user->username,
+                'tabla' => $request->input('tabla'),
+                'cambio' => $request->input('cambio_devolver'),
+            ]);
+
             // se redirecciona a la vista de prestamos
             return redirect()->route('usuarios.main')->with('Actualizado', 'Prestamo devuelto exitosamente.');
         }

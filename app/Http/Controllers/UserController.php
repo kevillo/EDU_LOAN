@@ -38,8 +38,8 @@ class UserController extends Controller
         $request->validate([
             'rol_usuario' => 'required',
             'username' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|regex:^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*^',
             'is_available' => 'required',
         ]);
 
@@ -135,10 +135,12 @@ class UserController extends Controller
             $user = Auth::user();
 
             // Verifica el tipo de rol y redirige según el caso
-            if ($user->id_rol_user == 1) {
+            if ($user->id_rol_user == 1 && $user->is_available == 1) {
                 return redirect()->route('usuarios.main'); // Ruta para administradores
-            } elseif ($user->id_rol_user == 2) {
+            } elseif ($user->id_rol_user == 2 && $user->is_available == 1) {
                 return redirect()->route('usuarios.main'); // Ruta para estudiantes
+            } elseif ($user->is_available == 0) {
+                return redirect()->route('login')->with('error', 'Usuario inactivo');
             }
 
         }
@@ -166,4 +168,12 @@ class UserController extends Controller
         }
         return view('main');
     }
+    public function buscar(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $usuario = User::where('username', 'like', '%' . $nombre . '%')->get();
+        return view('usuarios.index', ['usuarios' => $usuario]);
+    }
+
+
 }

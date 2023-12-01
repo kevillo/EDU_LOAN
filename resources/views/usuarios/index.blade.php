@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="{{asset('../resources/css/usuarios/index.css')}}">
 @endsection
 
+@section('title')
+<title>Usuarios</title>
+@endsection
+
 
 @section('content')
 
@@ -46,6 +50,25 @@
 
 
 <!-- fin alertas -->
+
+<!-- inicio de buscador -->
+<div class="container mt-5">
+
+    <form method="post" action="{{ route('buscar.usuario') }}">
+        @csrf
+        <input type="text" name="nombre" class="form-control" placeholder="Ingrese su búsqueda  por nombre de usuarios"
+            aria-label="Ingrese su búsqueda" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <br>
+            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Buscar</button>
+            <a href="{{ route('usuarios.index') }}" class="btn btn-outline-primary" type="submit"
+                id="button-addon2">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+
+<!-- fin de buscador -->
 
 <main class="container mt-5">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">

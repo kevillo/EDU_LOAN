@@ -17,7 +17,8 @@ class BitacoraController extends Controller
             return redirect()->route('login');
         }
 
-        $bitacora = Bitacora::all();
+        $bitacora = Bitacora::all()
+            ->sortByDesc('created_at');
         return view('bitacora.bitacora', compact('bitacora'));
     }
 
@@ -27,6 +28,10 @@ class BitacoraController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         $request->validate([
             'username_bit' => 'required',
             'tabla' => 'required',

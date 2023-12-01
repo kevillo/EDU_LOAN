@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-<title>crear curso</title>
+<title>crear rol de usuario</title>
 @endsection
 
 @section('content')

@@ -8,6 +8,7 @@ use App\Models\Estudiante;
 use App\Models\Prestamo;
 use App\Models\Curso;
 use App\Models\TipoEquipo;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -15,15 +16,28 @@ class ConsultaController extends Controller
 {
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+
         return view('consultas.index');
     }
     public function usuarios_index()
     {
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $users = User::all();
         return view('consultas.reportes_usuarios', compact('users'));
     }
     public function estudiantes_index()
     {
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $users = User::all();
         $equipos = Equipo::all();
         $estudiantes = Estudiante::all();
@@ -33,6 +47,10 @@ class ConsultaController extends Controller
     }
     public function equipos_index()
     {
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $users = User::all();
         $equipos = Equipo::all();
         $estudiantes = Estudiante::all();
@@ -45,6 +63,10 @@ class ConsultaController extends Controller
 
     public function prestamos_index()
     {
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $users = User::all();
         $equipos = Equipo::all();
         $estudiantes = Estudiante::all();
@@ -58,6 +80,10 @@ class ConsultaController extends Controller
     /*generacion de pdf */
     public function Usuarios_pdf()
     {
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $usuario = User::all();
         $equipos = Equipo::all();
         $estudiantes = Estudiante::all();
@@ -68,6 +94,10 @@ class ConsultaController extends Controller
     }
     public function Estudiantes_pdf()
     {
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $users = User::all();
         $equipos = Equipo::all();
         $estudiantes = Estudiante::all();
@@ -79,6 +109,10 @@ class ConsultaController extends Controller
 
     public function Equipos_pdf()
     {
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $users = User::all();
         $equipos = Equipo::all();
         $estudiantes = Estudiante::all();
@@ -91,6 +125,10 @@ class ConsultaController extends Controller
 
     public function Prestamos_pdf()
     {
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $users = User::all();
         $equipos = Equipo::all();
         $estudiantes = Estudiante::all();

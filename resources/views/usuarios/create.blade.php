@@ -52,6 +52,7 @@
                 <input type="email" class="form-control" placeholder="Ingrese su correo" id="email" name="email"
                     required>
             </div>
+
             @if($errors->has('email'))
             <div class="alert alert-danger">
                 {{ $errors->first('email') }}
@@ -63,6 +64,10 @@
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" placeholder="Ingrese contraseña" id="password"
                     name="password" required>
+                <!-- Mostrar contraseña -->
+                <input type="checkbox" id="showPassword" name="showPassword" class="checkbox" value="1">
+                <label for="showPassword">Mostrar contraseña</label>
+
             </div>
             @if($errors->has('password'))
             <div class="alert alert-danger">
@@ -70,16 +75,17 @@
             </div>
             @endif
 
+
             <!-- Disponibilidad -->
             <div class="mb-3">
                 <label for="is_available" class="form-label">Disponibilidad</label>
                 <select class="form-select" id="is_available" name="is_available" required>
                     <option value="" disabled selected>Seleccione la disponibilidad</option>
                     <option value="1">Activo</option>
-                    <option value="2">Inactivo</option>
+                    <option value="0">Inactivo</option>
                 </select>
             </div>
-            
+
             <!--Datos de bitacora-->
             <input type="hidden" id="tabla" name="tabla" value="usuario">
             <input type="hidden" id="cambio" name="cambio" value="crear">
@@ -96,4 +102,22 @@
     </div>
 </form>
 </div>
+
+@section('js')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var passwordInput = document.getElementById('password');
+        var showPasswordButton = document.getElementById('showPassword');
+
+        showPasswordButton.addEventListener('click', function () {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+    });
+</script>
+
+@endsection
 @endsection

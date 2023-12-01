@@ -43,9 +43,14 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title text-center">Prestamos de equipos</h5>
+                    @if (Auth::check() && Auth::user()->id_rol_user == 1)
                     <p class="card-text ">Optimiza la gestión de préstamos de equipos con nuestra plataforma dedicada.
                         Toma decisiones informadas al revisar y aceptar, o rechazar, solicitudes de préstamo de equipos
                     </p>
+                    @else
+                    <p class="card-text ">Solicita préstamos de equipos con nuestra plataforma dedicada. Toma
+                        consulta el estado de tus solicitudes.</p>
+                    @endif
                     <a href="{{route('prestamos.index')}}" class="btn btn-success goto">Ir a prestamos </a>
                 </div>
             </div>

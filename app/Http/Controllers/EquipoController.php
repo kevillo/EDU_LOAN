@@ -63,8 +63,8 @@ class EquipoController extends Controller
         $user = Auth::user();
         Bitacora::create([
             'username_bit' => $user->username,
-            'tabla'=>$request->input('tabla'),
-            'cambio'=>$request->input('cambio'),
+            'tabla' => $request->input('tabla'),
+            'cambio' => $request->input('cambio'),
         ]);
 
         return redirect()->route('equipos.index')->with('Creado', 'Equipo creado exitosamente');
@@ -116,10 +116,10 @@ class EquipoController extends Controller
 
         $user = Auth::user();
         Bitacora::create([
-            
+
             'username_bit' => $user->username,
-            'tabla'=>$request->input('tabla'),
-            'cambio'=>$request->input('cambio'),
+            'tabla' => $request->input('tabla'),
+            'cambio' => $request->input('cambio'),
         ]);
 
         return redirect()->route('equipos.index')->with('Actualizado', 'Equipo actualizado exitosamente');
@@ -138,22 +138,29 @@ class EquipoController extends Controller
 
     // destroy
 
-    public function destroy(Equipo $equipo, $tabla="tabla",$cambio="cambio")
+    public function destroy(Equipo $equipo, $tabla = "tabla", $cambio = "cambio")
     {
         if (!Auth::check()) {
             return redirect()->route('login');
         }
 
         $user = Auth::user();
-        Bitacora::create([  
+        Bitacora::create([
             'username_bit' => $user->username,
-            $tabla=>"equipo",
-            $cambio=>"eliminacion",   
+            $tabla => "equipo",
+            $cambio => "eliminacion",
         ]);
 
         Storage::disk('public')->delete($equipo->imagen_equipo);
         $equipo->delete();
         return redirect()->route('equipos.index')->with('Eliminado', 'Equipo eliminado exitosamente');
+    }
+
+    public function buscar(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $equipo = Equipo::where('nombre_equipo', 'like', '%' . $nombre . '%')->get();
+        return view('equipos.index', ['equipos' => $equipo]);
     }
 
 }
