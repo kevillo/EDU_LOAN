@@ -121,10 +121,10 @@
 
             <!-- campo fecha establecida, que tenga un valor por defecto  de el dia de hoy-->
             <div class="form-group">
-                <label for="fecha_solicitud">Fecha de solicitud</label>
-                <input type="date" class="form-control" id="fecha_solicitud" name="fecha_solictud" required
-                    value="{{date('Y-m-d')}}" disabled>
+                <input type="hidden" class="form-control" id="fecha_solictud" name="fecha_solictud" required
+                    value="{{date('Y-m-d')}}">
             </div>
+
             @if ($errors->has('fecha_solictud'))
             <div class="alert alert-danger">
                 {{ $errors->first('fecha_solictud') }}
@@ -149,6 +149,8 @@
             <!-- Botón Registrar -->
             <button type="submit" class="btn btn-primary float-start">Solicitar Préstamo</button>
         </form>
+        <!-- boton para ver mis prestamos pendientes -->
+        <a href="{{route('prestamos.index')}}" class="btn btn-primary float-end">Ver mis préstamos pendientes</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

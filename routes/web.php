@@ -124,6 +124,9 @@ Route::get('/prestamos', [PrestamoController::class, 'index'])->name('prestamos.
 Route::get('/prestamos/create', [PrestamoController::class, 'create'])->name('prestamos.create');
 Route::post('/prestamos', [PrestamoController::class, 'store'])->name('prestamos.store');
 
+// se actualiza se ejecuta de un solo el metodo update
+Route::put('/prestamos/{prestamo}', [PrestamoController::class, 'update'])->name('prestamo.update');
+
 /*
 --------------------------------------------------------------------------
 | Rutas para la gestion de bitacoras
