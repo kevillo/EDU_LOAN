@@ -31,11 +31,11 @@ class RolUsuarioController extends Controller
             'descripcion' => $request->input('descripcion'),
         ]);
 
-        $user = Auth::user();
+        $user = Auth::user()->username;
         Bitacora::create([
-            'username_bit' => $user->username,
-            'tabla'=>$request->input('tabla'),
-            'cambio'=>$request->input('cambio'),
+            'username_bit' => $user,
+            'tabla' => $request->input('tabla'),
+            'cambio' => $request->input('cambio'),
         ]);
 
         return redirect()->route('usuarios.create')->with('Creado', 'Rol creado exitosamente.');

@@ -122,6 +122,7 @@ para la creacion, edicion, eliminacion y visualizacion de prestamos
 
 Route::get('/prestamos', [PrestamoController::class, 'index'])->name('prestamos.index');
 Route::get('/prestamos/create', [PrestamoController::class, 'create'])->name('prestamos.create');
+Route::post('/prestamos', [PrestamoController::class, 'store'])->name('prestamos.store');
 
 /*
 --------------------------------------------------------------------------
@@ -131,9 +132,8 @@ Estas rutas son para la gestion de bitacoras, en ellas se encuentran las rutas
 para la creacion, edicion, eliminacion y visualizacion de bitacoras
 */
 
-Route::get('/bitacora', function () {
-    return view('bitacora.bitacora');
-})->name('bitacora');
+Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index');
+
 
 
 Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.bitacora');
@@ -171,9 +171,8 @@ para los menus principales de los usuarios
 */
 
 
-Route::get('/', function () {
-    return view('main');
-})->name('inicio');
+
+Route::get('/', [UserController::class, 'main'])->name('usuarios.main');
 
 /*
 --------------------------------------------------------------------------

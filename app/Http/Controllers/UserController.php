@@ -32,9 +32,9 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        /*if (!Auth::check()) {
+        if (!Auth::check()) {
             return redirect()->route('login');
-        }*/
+        }
         $request->validate([
             'rol_usuario' => 'required',
             'username' => 'required',
@@ -54,8 +54,8 @@ class UserController extends Controller
         $user = Auth::user();
         Bitacora::create([
             'username_bit' => $user->username,
-            'tabla'=>$request->input('tabla'),
-            'cambio'=>$request->input('cambio'),
+            'tabla' => $request->input('tabla'),
+            'cambio' => $request->input('cambio'),
         ]);
 
         return redirect()->route('usuarios.index')->with('Creado', 'Usuario creado exitosamente.');
@@ -101,24 +101,24 @@ class UserController extends Controller
         $user = Auth::user();
         Bitacora::create([
             'username_bit' => $user->username,
-            'tabla'=>$request->input('tabla'),
-            'cambio'=>$request->input('cambio'),
+            'tabla' => $request->input('tabla'),
+            'cambio' => $request->input('cambio'),
         ]);
 
         return redirect()->route('usuarios.index')->with('Actualizado', 'Usuario actualizado exitosamente.');
     }
 
-    public function destroy(user $usuario, $tabla="tabla",$cambio="cambio")
+    public function destroy(user $usuario, $tabla = "tabla", $cambio = "cambio")
     {
         if (!Auth::check()) {
             return redirect()->route('login');
         }
 
         $user = Auth::user();
-        Bitacora::create([  
+        Bitacora::create([
             'username_bit' => $user->username,
-            $tabla=>"usuario",
-            $cambio=>"eliminacion",   
+            $tabla => "usuario",
+            $cambio => "eliminacion",
         ]);
 
         $usuario->delete();
@@ -128,10 +128,7 @@ class UserController extends Controller
     // Función para iniciar sesión
     public function login(Request $request)
     {
-        /*
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }*/
+
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -139,9 +136,9 @@ class UserController extends Controller
 
             // Verifica el tipo de rol y redirige según el caso
             if ($user->id_rol_user == 1) {
-                return redirect()->route('inicio'); // Ruta para administradores
+                return redirect()->route('usuarios.main'); // Ruta para administradores
             } elseif ($user->id_rol_user == 2) {
-                return redirect()->route('inicio'); // Ruta para estudiantes
+                return redirect()->route('usuarios.main'); // Ruta para estudiantes
             }
 
         }
@@ -162,4 +159,11 @@ class UserController extends Controller
         return redirect()->route('login');
     }
 
+    public function main()
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+        return view('main');
+    }
 }

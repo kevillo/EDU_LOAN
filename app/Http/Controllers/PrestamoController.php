@@ -6,6 +6,7 @@ use App\Models\Prestamo;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TipoEquipo;
 use App\Models\Equipo;
+use App\Models\RolUsuario;
 use App\Models\User;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
@@ -39,9 +40,14 @@ class PrestamoController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login');
         }
+        // traer la descripcion del rol del usuario logueado
 
-        if (Auth::user()->id_rol_user == 1) {
-            return redirect()->route('inicio');
+        $user = Auth::user()->id_rol_user;
+        // busar el rol de usuario del usuario logueado
+        $rol = RolUsuario::where('id', $user)->first();
+        // si el rol es administrador redireccionar a la vista de administrador
+        if ($rol->descripcion == 'Administrador' || $rol->descripcion == 'administrador') {
+            return redirect()->route('usuarios.main');
         }
         // traer todos los equipos  que esten disponibles
         $equipos = Equipo::where('estado_equipo', '0')->get();
@@ -60,25 +66,34 @@ class PrestamoController extends Controller
     public function store(Request $request)
     {
 
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
 
-
+        dd($request);
+        // validar los campos
         $request->validate([
-            'fecha_solicitud' => 'required',
-            'fecha_prestamo' => 'required',
+            'id_estudiante' => 'required',
+            'id_equipo' => 'required',
+            'fecha_solictud' => 'required',
             'fecha_devolucion_estimada' => 'required',
-            'fecha_devolucion_real' => 'required',
             'estado_prestamo' => 'required',
         ]);
+        // crear el prestamo
+        Prestamo::create([
+            'id_estudiante' => $request->input('id_estudiante'),
+            'id_equipo' => $request->input('id_equipo'),
+            'fecha_solictud' => $request->input('fecha_solictud'),
+            'fecha_devolucion_estimada' => $request->input('fecha_devolucion_estimada'),
+            'estado_prestamo' => $request->input('estado_prestamo'),
+        ]);
 
-        $prestamo = new Prestamo;
-        $prestamo->fecha_solicitud = $request->fecha_solicitud;
-        $prestamo->fecha_prestamo = $request->fecha_prestamo;
-        $prestamo->fecha_devolucion_estimada = $request->fecha_devolucion_estimada;
-        $prestamo->fecha_devolucion_real = $request->fecha_devolucion_real;
-        $prestamo->estado_prestamo = $request->estado_prestamo;
-        $prestamo->save();
+        // cambiar el estado del equipo a prestado
+        $equipo = Equipo::find($request->input('id_equipo'));
+        $equipo->estado_equipo = 1;
+        $equipo->save();
 
-        return redirect('/prestamos')->with('correcto', 'Prestamo creado exitosamente');
-
+        // redireccionar a la vista de prestamos
+        return redirect()->route('usuarios.main')->with('Creado', 'Prestamo creado exitosamente.');
     }
 }

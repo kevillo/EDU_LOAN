@@ -137,14 +137,14 @@
                     @endif
 
                     <!--Datos de bitacora-->
-            <input type="hidden" id="tabla" name="tabla" value="equipo">
-            <input type="hidden" id="cambio" name="cambio" value="crear">
+                    <input type="hidden" id="tabla" name="tabla" value="equipo">
+                    <input type="hidden" id="cambio" name="cambio" value="crear">
 
 
 
                     <!-- Botones Cancelar y Registrar -->
                     <div class="mb-3">
-                        <a href="menu_principal.blade.php" class="btn btn-danger">Cancelar</a>
+                        <a href="{{route('usuarios.index')}}" class="btn btn-danger">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Registrar</button>
                     </div>
 

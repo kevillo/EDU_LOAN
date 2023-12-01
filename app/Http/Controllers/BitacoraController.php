@@ -13,6 +13,10 @@ class BitacoraController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         $bitacora = Bitacora::all();
         return view('bitacora.bitacora', compact('bitacora'));
     }
