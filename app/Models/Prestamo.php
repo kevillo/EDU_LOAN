@@ -36,4 +36,13 @@ class Prestamo extends Model
     {
         return $this->hasMany(Log::class);
     }
+
+    protected $fillable = [
+        'id_usuario',
+        'id_equipo',
+        'id_estudiante',
+        'fecha_solictud',
+        'fecha_devolucion_estimada',
+        'estado_prestamo',
+    ];
 }

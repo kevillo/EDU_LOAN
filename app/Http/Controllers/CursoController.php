@@ -32,6 +32,7 @@ class CursoController extends Controller
         ]);
 
         $user = Auth::user();
+        
         Bitacora::create([
             'username_bit' => $user->username,
             'tabla'=>$request->input('tabla'),

@@ -12,10 +12,23 @@
 
 
 
+
+
 @section('content')
 
-@section('navbar')
-@endsection
+<!-- alertas -->
+@if(session('Actualizado'))
+<div class="alert alert-success custom-alert" role="alert">
+    <strong>¡Actualizado!</strong> {{ session('Actualizado') }}
+</div>
+@endif
+
+@if(session('Creado'))
+<div class="alert alert-success custom-alert" role="alert">
+    <strong>¡Creado!</strong> {{ session('Creado') }}
+</div>
+@endif
+
 
 <div class="container mt-5">
     <!-- Primera tarjeta (orientada a la derecha) -->
@@ -33,7 +46,7 @@
                     <p class="card-text ">Optimiza la gestión de préstamos de equipos con nuestra plataforma dedicada.
                         Toma decisiones informadas al revisar y aceptar, o rechazar, solicitudes de préstamo de equipos
                     </p>
-                    <a href="{{route('prestamos.create')}}" class="btn btn-success goto">Ir a prestamos </a>
+                    <a href="{{route('prestamos.index')}}" class="btn btn-success goto">Ir a prestamos </a>
                 </div>
             </div>
             <!-- fin texto-->
@@ -143,6 +156,10 @@
 @endif
 <br><br><br><br><br>
 
+@section('js')
+<script src="{{asset('../resources/js/usuarios/index.js')}}"></script>
+<script src="{{asset('../resources/js/delete.js')}} "></script>
+@endsection
 
 
 @endsection
