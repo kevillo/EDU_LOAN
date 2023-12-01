@@ -146,7 +146,7 @@
                     <h5 class="card-title text-center ">Uso de consultas</h5>
                     <p class="card-text ">Obtén información valiosa mediante la ejecución de consultas específicas para
                         acceder a datos relevantes.</p>
-                    <a href="#" class="btn btn-success goto">Ir a consultas</a>
+                    <a href="{{route('consultas.index')}}" class="btn btn-success goto">Ir a consultas</a>
                 </div>
             </div>
             <!-- fin texto-->

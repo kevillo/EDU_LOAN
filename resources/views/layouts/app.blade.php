@@ -43,6 +43,9 @@
     <article>
         @yield('content')
     </article>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+
     <footer class="text-center">
         <p>&copy; 2023 EDU LOAN. Todos los derechos reservados.</p>
     </footer>

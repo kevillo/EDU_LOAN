@@ -22,9 +22,6 @@ use App\Http\Controllers\ConsultaController;
 |
 */
 
-Route::get('/prestamos', function () {
-    return view('prestamos');
-});
 
 
 /*
@@ -52,8 +49,20 @@ Route::put('/usuarios/{usuario}', [UserController::class, 'update'])->name('usua
 Route::delete('/usuarios/{usuario}', [UserController::class, 'destroy'])->name('usuarios.destroy');
 
 //ruta para consultas
+
+
+
 Route::get('/consultas', [ConsultaController::class, 'index'])->name('consultas.index');
-Route::get('/consultas/pdf', [ConsultaController::class, 'pdf'])->name('consultas.pdf');
+
+Route::get('/consultas/usuarios', [ConsultaController::class, 'usuarios_index'])->name('consultas.usuarios_index');
+Route::get('/consultas/estudiantes', [ConsultaController::class, 'estudiantes_index'])->name('consultas.estudiantes_index');
+Route::get('/consultas/equipos', [ConsultaController::class, 'equipos_index'])->name('consultas.equipos_index');
+Route::get('/consultas/prestamos', [ConsultaController::class, 'prestamos_index'])->name('consultas.prestamos_index');
+
+Route::get('/consultas/Updf', [ConsultaController::class, 'Usuarios_pdf'])->name('consultas.Updf');
+Route::get('/consultas/Epdf', [ConsultaController::class, 'Estudiantes_pdf'])->name('consultas.Epdf');
+Route::get('/consultas/Epqdpf', [ConsultaController::class, 'Equipos_pdf'])->name('consultas.Eqpdf');
+Route::get('/consultas/Ppdf', [ConsultaController::class, 'Prestamos_pdf'])->name('consultas.Ppdf');
 /*
 --------------------------------------------------------------------------
 | Rutas para la gestion de estudiantes
@@ -139,9 +148,6 @@ para la creacion, edicion, eliminacion y visualizacion de bitacoras
 */
 
 Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index');
-
-
-
 Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.bitacora');
 /*
 --------------------------------------------------------------------------
