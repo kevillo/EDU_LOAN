@@ -16,9 +16,8 @@ return new class extends Migration {
             $table->string('username_bit');
             $table->string('tabla');
             $table->string('cambio');
-
-            //$table->foreign('username_bit')->references('username')->on('users')->onDelete('cascade');;
             $table->timestamps();
+            $table->softDeletes();
         });
 
     }

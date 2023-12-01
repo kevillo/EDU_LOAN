@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->string('descripcion');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

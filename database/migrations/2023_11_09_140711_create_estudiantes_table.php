@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->foreign('id_curso')->references('id')->on('cursos')->ondelete('cascade');
             $table->foreign('id_usuario')->references('id')->on('users')->ondelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

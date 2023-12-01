@@ -27,6 +27,7 @@ return new class extends Migration {
             $table->date('fecha_devolucion_real')->nullable();
             $table->string('estado_prestamo')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
