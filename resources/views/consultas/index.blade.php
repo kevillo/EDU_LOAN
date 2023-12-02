@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('../resources/css/consultas/consulta.css')}}">
+<link rel="stylesheet" href="{{asset('/css/consultas/consulta.css')}}">
 @endsection
 
 @section('title')
@@ -15,7 +15,7 @@
     <div class="row ">
         <div class=" col-lg-4 col-md-6 col-sm-12">
             <div class="card">
-                <img src="{{asset('../resources/img/usuarios.png')}}" class="img img-fluid"
+                <img src="{{asset('/img/usuarios.png')}}" class="img img-fluid"
                     style="max-width:200px; object-fit:cover; margin:0 auto;" alt="Estudiantes">
                 <div class="card-body">
                     <h5 class="card-title">Reporte de Usuarios</h5>
@@ -28,7 +28,7 @@
 
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card">
-                <img src="{{asset('../resources/img/estudiantes.png')}}" class="img img-fluid"
+                <img src="{{asset('/img/estudiantes.png')}}" class="img img-fluid"
                     style="max-width:200px; object-fit:cover; margin:0 auto;" alt="Estudiantes">
                 <div class="card-body">
                     <h5 class="card-title">Reporte de Estudiantes</h5>
@@ -40,7 +40,7 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card">
-                <img src="{{asset('../resources/img/equipos.png')}}" class="img img-fluid"
+                <img src="{{asset('/img/equipos.png')}}" class="img img-fluid"
                     style="max-width:200px; object-fit:cover; margin:0 auto;" alt="Equipos">
                 <div class="card-body">
                     <h5 class="card-title">Reporte de Equipos</h5>
@@ -51,7 +51,7 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card">
-                <img src="{{asset('../resources/img/prestamo.png')}}" class="img img-fluid"
+                <img src="{{asset('/img/prestamo.png')}}" class="img img-fluid"
                     style="max-width:200px; object-fit:cover; margin:0 auto;" alt="Estudiantes">
                 <div class="card-body">
                     <h5 class="card-title">Reporte de prestamos</h5>
@@ -61,11 +61,6 @@
                 </div>
             </div>
         </div>
-
-
-
-        <!-- Repite estas tarjetas según sea necesario para cumplir con la disposición deseada -->
-
     </div>
 </div>
 

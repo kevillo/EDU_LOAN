@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reporte Usuarios</title>
-    <link rel="stylesheet" href="../resources/css/consultas/pdf.css">
+    <link rel="stylesheet" href="{{asset('/css/consultas/pdf.css')}}">
 </head>
 
 <body>

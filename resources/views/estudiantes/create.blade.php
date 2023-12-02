@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('../../css/estudiantes/create.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/estudiantes/create.css') }}">
 @endsection
 
 @section('title')
@@ -15,7 +15,7 @@
         @csrf
         <div class="row">
             <div class="col-3">
-                <img src="../../resources/img/icon-estudiante.svg" alt="Icono de Estudiante" width="100" height="100">
+                <img src="{{ asset('/img/icon-estudiante.svg') }}" alt="Icono de Estudiante" width="100" height="100">
             </div>
             <div class="col-9">
 
@@ -50,8 +50,6 @@
                     <p>Debe seleccionar un usuario</p>
                 </div>
                 @endif
-
-                <!-- boton para ir a agregar curso -->
 
                 <!-- Nombre -->
                 <div class="mb-3">
@@ -99,8 +97,6 @@
                     <p>Debe ingresar una fecha de nacimiento</p>
                 </div>
                 @endif
-
-
                 <!-- Imagen -->
                 <div class="mb-3">
                     <label for="imagen" class="form-label">Imagen</label>
@@ -116,8 +112,8 @@
                 @endif
 
                 <!--Datos de bitacora-->
-            <input type="hidden" id="tabla" name="tabla" value="estudiante">
-            <input type="hidden" id="cambio" name="cambio" value="crear">
+                <input type="hidden" id="tabla" name="tabla" value="estudiante">
+                <input type="hidden" id="cambio" name="cambio" value="crear">
 
                 <!-- Botón Cancelar -->
                 <a href="{{route('estudiantes.index')}}" class="btn btn-danger">Cancelar</a>

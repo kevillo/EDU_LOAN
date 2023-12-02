@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('../resources/css/usuarios/create.css')}}">
+<link rel="stylesheet" href="{{asset('/css/usuarios/create.css')}}">
 @endsection
 
 @section('title')
@@ -17,10 +17,9 @@
     @csrf
     <div class="row">
         <div class="col-3">
-            <img src="../../resources/img/icon-usuario.png" alt="Icono de Usuario" width="100" height="100">
+            <img src="{{asset('/img/icon-usuario.png')}}" alt="Icono de Usuario" width="100" height="100">
         </div>
         <div class="col-9">
-
             <!-- ID Rol Usuario -->
             <div class="mb-3">
                 <label for="rol_usuario" class="form-label">Rol Usuario</label>

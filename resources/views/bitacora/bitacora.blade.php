@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('path/to/custom/css/usuarios/index.css') }}">
-@endsection
-
 @section('content')
 <h2 class="text-center">Bitácora</h2>
 <div class="container p-5">
@@ -36,7 +32,5 @@
 
     <a href="{{route('usuarios.main')}}" class="btn btn-primary">Regresar</a>
 </div>
-
-<!-- regresar-->
 
 @endsection

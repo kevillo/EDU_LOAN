@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('../resources/css/usuarios/index.css')}}">
+<link rel="stylesheet" href="{{asset('/css/usuarios/index.css')}}">
 @endsection
 
 @section('title')
@@ -47,8 +47,6 @@
     <strong>¡Creado!</strong> {{ session('Creado') }}
 </div>
 @endif
-
-
 <!-- fin alertas -->
 
 
@@ -117,8 +115,8 @@
 </main>
 <br><br><br><br><br><br>
 @section('js')
-<script src="{{asset('../resources/js/usuarios/index.js')}}"></script>
-<script src="{{asset('../resources/js/delete.js')}} "></script>
+<script src="{{asset('/js/usuarios/index.js')}}"></script>
+<script src="{{asset('/js/delete.js')}} "></script>
 @endsection
 
 @endsection

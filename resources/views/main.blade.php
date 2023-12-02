@@ -3,7 +3,7 @@
 
 @section('css')
 
-<link rel="stylesheet" href="{{asset('../resources/css/menu/menu.css')}}">
+<link rel="stylesheet" href="{{asset('/css/menu/menu.css')}}">
 @endsection
 
 @section('title')
@@ -36,8 +36,7 @@
         <div class="row ">
             <!-- imagen-->
             <div class="col-md-4 ">
-                <img src="{{asset('../resources/img/prestamo.png')}}" alt="Imagen"
-                    class="card-img img-fluid rounded mx-auto ">
+                <img src="{{asset('/img/prestamo.png')}}" alt="Imagen" class="card-img img-fluid rounded mx-auto ">
             </div>
             <!-- texto-->
             <div class="col-md-8">
@@ -80,8 +79,7 @@
             <!-- fin texto-->
             <!-- imagen-->
             <div class="col-md-4">
-                <img src="{{asset('../resources/img/estudiantes.png')}}" alt="Imagen"
-                    class="card-img img-fluid rounded ">
+                <img src="{{asset('/img/estudiantes.png')}}" alt="Imagen" class="card-img img-fluid rounded ">
             </div>
         </div>
     </div>
@@ -93,7 +91,7 @@
         <div class="row ">
             <!-- imagen-->
             <div class="col-md-4 ">
-                <img src="{{asset('../resources/img/usuarios.png')}}" alt="Imagen" class="card-img img-fluid rounded ">
+                <img src="{{asset('/img/usuarios.png')}}" alt="Imagen" class="card-img img-fluid rounded ">
             </div>
             <!-- texto-->
             <div class="col-md-8">
@@ -129,7 +127,7 @@
             <!-- fin texto-->
             <!-- imagen-->
             <div class="col-md-4 ">
-                <img src="{{asset('../resources/img/equipos.png')}}" alt="Imagen" class="card-img img-fluid rounded ">
+                <img src="{{asset('/img/equipos.png')}}" alt="Imagen" class="card-img img-fluid rounded ">
             </div>
         </div>
     </div>
@@ -143,7 +141,7 @@
 
             <!-- imagen-->
             <div class="col-md-4 ">
-                <img src="{{asset('../resources/img/consultas.png')}}" alt="Imagen" class="card-img img-fluid rounded ">
+                <img src="{{asset('/img/consultas.png')}}" alt="Imagen" class="card-img img-fluid rounded ">
             </div>
             <!-- texto-->
             <div class="col-md-8">
@@ -162,8 +160,8 @@
 <br><br><br><br><br>
 
 @section('js')
-<script src="{{asset('../resources/js/usuarios/index.js')}}"></script>
-<script src="{{asset('../resources/js/delete.js')}} "></script>
+<script src="{{asset('/js/usuarios/index.js')}}"></script>
+<script src="{{asset('/js/delete.js')}} "></script>
 @endsection
 
 

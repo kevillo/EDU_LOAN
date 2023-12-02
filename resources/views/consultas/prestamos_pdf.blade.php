@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="../resources/css/consultas/pdf.css">
+    <link rel="stylesheet" href="{{asset('/css/consultas/pdf.css')}}">
     <title>Prestamos</title>
 </head>
 
@@ -82,15 +81,12 @@
                         @elseif ($prestamo->estado_prestamo == 'Devuelto')
                         <span class="badge bg-info">Devuelto</span>
                         @endif
-
-
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
 </body>
 
 </html>
