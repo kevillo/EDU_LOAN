@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/estudiantes/create.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/estudiantes/create.css') }}">
 @endsection
 
 @section('title')
@@ -30,7 +30,7 @@
             <p><strong>Curso:</strong> {{ $cursos->nombre_curso }}</p>
 
 
-            <div class=" p-2  ">
+            <div class="p-2">
                 <a href="{{ route('estudiantes.index') }}" class="btn btn-danger">Volver</a>
             </div>
         </div>

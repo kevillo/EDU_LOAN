@@ -119,8 +119,8 @@ class ConsultaController extends Controller
         $prestamos = Prestamo::all();
         $cursos = Curso::all();
         $tipos = TipoEquipo::all();
-        $Epdf = Pdf::loadView('consultas.equipos_pdf', compact('cursos', 'estudiantes', 'users', 'equipos', 'tipos'));
-        return $Epdf->stream();
+        $Eqpdf = Pdf::loadView('consultas.equipos_pdf', compact('cursos', 'estudiantes', 'users', 'equipos', 'tipos'));
+        return $Eqpdf->stream();
     }
 
     public function Prestamos_pdf()

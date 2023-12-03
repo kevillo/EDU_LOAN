@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/ico" sizes="32x32" href="../resources/img/UNICAH_logo.ico" />
-    <link rel="stylesheet" href="{{asset('../resources/css/app.css')}}">
+    <link rel="icon" type="image/ico" sizes="32x32" href="{{asset('/img/UNICAH_logo.ico')}}" />
+    <link rel="stylesheet" href="{{asset('/css/app.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     @yield('css')
     @yield('title')
@@ -52,7 +52,6 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
     @yield('js')

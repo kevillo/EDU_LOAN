@@ -12,7 +12,7 @@
         @csrf
         <div class="row">
             <div class="col-md-3 text-center mb-4">
-                <img src="../../resources/img/icon-equipo.png" alt="Icono de Equipos" class="img-fluid">
+                <img src="{{asset('/img/icon-equipo.png')}}" alt="Icono de Equipos" class="img-fluid">
             </div>
 
             <div class="col-md-9">
@@ -49,7 +49,6 @@
                 <div class="mb-3">
                     <a href="{{ route('tipo_equipos.create') }}" class="btn btn-primary">Agregar nuevo tipo de
                         equipo</a>
-
                     <!-- Nombre, Marca, Modelo, Color -->
                     <div class="row">
                         <div class="col-md-6">
@@ -64,8 +63,6 @@
                             {{ $errors->first('nombre_equipo') }}
                         </div>
                         @endif
-
-
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="marca" class="form-label">Marca</label>
@@ -79,7 +76,6 @@
                         </div>
                         @endif
                     </div>
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -93,7 +89,6 @@
                             {{ $errors->first('modelo_equipo') }}
                         </div>
                         @endif
-
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="color" class="form-label">Color</label>
@@ -107,7 +102,6 @@
                         </div>
                         @endif
                     </div>
-
                     <!-- Estado -->
                     <div class="mb-3">
                         <label for="estado" class="form-label">Estado</label>
@@ -122,8 +116,6 @@
                         {{ $errors->first('estado_equipo') }}
                     </div>
                     @endif
-
-
                     <!-- Imagen de equipo -->
                     <div class="mb-3">
                         <label for="imagen" class="form-label">Imagen</label>
@@ -135,21 +127,14 @@
                         {{ $errors->first('imagen_equipo') }}
                     </div>
                     @endif
-
                     <!--Datos de bitacora-->
                     <input type="hidden" id="tabla" name="tabla" value="equipo">
                     <input type="hidden" id="cambio" name="cambio" value="crear">
-
-
-
                     <!-- Botones Cancelar y Registrar -->
                     <div class="mb-3">
                         <a href="{{route('usuarios.index')}}" class="btn btn-danger">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Registrar</button>
                     </div>
-
-
-
                 </div>
             </div>
     </form>

@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{asset('../resources/css/usuarios/index.css')}}">
+<link rel="stylesheet" href="{{asset('/css/usuarios/index.css')}}">
 @endsection
 
 @section('title')
@@ -16,7 +16,7 @@
 <div class="container">
     <form action="{{ route('cursos.store') }}" method="POST">
         @csrf
-        
+
 
         <div class="form-group">
             <label for="nombre_curso">Nombre del curso:</label>
@@ -28,7 +28,7 @@
         <input type="hidden" id="cambio" name="cambio" value="crear">
 
 
-        
+
         <button type="submit" class="btn btn-primary">Guardar curso</button>
     </form>
 </div>

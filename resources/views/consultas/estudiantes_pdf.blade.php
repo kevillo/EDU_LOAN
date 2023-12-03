@@ -5,13 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporte estudiantes</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../resources/css/consultas/pdf.css">
+    <link rel="stylesheet" href="{{asset('/css/consultas/pdf.css')}}">
 </head>
 
 <body>
-
     <h2>Reporte de Estudiantes</h2>
     <table class="text-center">
         <thead>
@@ -32,7 +29,6 @@
                 <td>{{$user->username}}</td>
                 @endif
                 @endforeach
-
                 <td>{{$estudiante->nombre_estudiante}}</td>
                 <td>{{$estudiante->apellido_estudiante}}</td>
                 <td>{{$estudiante->correo_estudiante}}</td>

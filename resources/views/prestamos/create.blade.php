@@ -2,7 +2,7 @@
 
 
 @section('css')
-<link rel="stylesheet" href="../resources/css/estilo_prestamos.css">
+<link rel="stylesheet" href="{{asset('../resources/css/estilo_prestamos.css')}}">
 @endsection
 
 @section('title')
